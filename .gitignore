@@ -123,3 +123,7 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# fro react native
+.flowconfig
+.watchmanconfig
