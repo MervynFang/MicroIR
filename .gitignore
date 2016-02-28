@@ -1,6 +1,6 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
 
-*.iml
+# *.iml
 
 ## Directory-based project format:
 .idea/
@@ -49,12 +49,6 @@ crashlytics-build.properties
 
 
 
-
-
-
-
-
-
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -81,12 +75,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
-
-node_modules/
-.npm/
-npm-debug.log
-.sass-cache/
 
 
 
@@ -124,6 +112,16 @@ proguard/
 # Android Studio captures folder
 captures/
 
-# fro react native
+
+
+
+
+# for npm
+node_modules/
+.npm/
+npm-debug.log
+.sass-cache/
+
+# for react native
 .flowconfig
 .watchmanconfig
