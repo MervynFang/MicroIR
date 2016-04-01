@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#000',
     },
     welcome: {
-        fontSize: 20,
+        fontSize: 24,
         textAlign: 'center',
         margin: 10,
         color: '#FFF',
