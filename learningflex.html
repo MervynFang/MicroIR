@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Flex</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body > .wrapper > div {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        background: #2d53af;
+        /*margin-left: 10px;*/
+    }
+
+    body > .wrapper > div:nth-child(1) {
+        height: 200px;
+    }
+
+    body > .wrapper > div:nth-child(2) {
+        align-self: flex-start;
+    }
+
+    body > .wrapper > div:nth-child(3) {
+        align-self: flex-end;
+    }
+
+    .wrapper {
+        padding: 20px;
+        /*display: -webkit-flex;*/
+        display: flex;
+        flex-flow: row wrap;
+        /*flex-direction: row;*/
+        /*flex-wrap: wrap;*/
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .haha {
+        /*width: 640px;*/
+        display: flex;
+        flex-flow: row wrap;
+        min-height: 100px;
+    }
+
+    .haha > div {
+        flex: 1 20px;
+    }
+
+    .haha > div:nth-child(1) {
+        background: #660000;
+    }
+
+    .haha > div:nth-child(2) {
+        flex: 2 200px; /*基础的是100 剩下的500按照flex比例分给大家*/
+        background: #a6b779;
+    }
+
+    .haha > div:nth-child(3) {
+        background: #40a070;
+    }
+
+    .cup {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        width: 100vh;
+        height: 100%;
+    }
+
+    .cup header {
+        order: 1;
+        flex: 1;
+    }
+
+    .cup section {
+        order: 2;
+        flex: 1;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: stretch;
+    }
+
+    .cup section nav {
+        flex: 1;
+        order: 1;
+    }
+
+    .cup section article {
+        flex: 4;
+        order: 2;
+    }
+
+    .cup section aside {
+        flex: 2;
+        order: 3;
+    }
+
+    .cup footer {
+        order: 3;
+        flex: 1;
+    }
+
+</style>
+<div class="wrapper">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+</div>
+<div class="haha">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+</div>
+<div class="cup">
+    <header>header</header>
+    <section>
+        <nav>nav</nav>
+        <article>article</article>
+        <aside>aside</aside>
+    </section>
+    <footer>footer</footer>
+</div>
+</body>
+</html>
