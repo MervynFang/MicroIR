@@ -11,31 +11,14 @@ import React, {
     View
 } from 'react-native';
 
+import {Main} from './views/main'
+
 class playwithrn extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Let's Start React Native!
-                </Text>
-            </View>
+            <Main></Main>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#000',
-    },
-    welcome: {
-        fontSize: 28,
-        textAlign: 'center',
-        margin: 10,
-        color: '#FFF',
-    },
-});
 
 AppRegistry.registerComponent('playwithrn', () => playwithrn);
