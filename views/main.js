@@ -14,7 +14,7 @@ class Main extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
-                    Let's Start React Native!
+                    Learn How to Use Phone
                 </Text>
             </View>
         );
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000git ',
+        backgroundColor: '#acd',
     },
     welcome: {
         fontSize: 28,
