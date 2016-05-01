@@ -6,9 +6,9 @@
 import React, {
     AppRegistry,
     Component,
-    StyleSheet,
-    Text,
-    View
+    // StyleSheet,
+    // Text,
+    // View
 } from 'react-native';
 
 import {Main} from './views/main'
