@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 01:03:38
+* @Last modified time: 2016,May,03 02:19:53
 */
 
 import React, {
@@ -99,23 +99,26 @@ class Main extends Component {
                 <TouchableOpacity
                     onPress={this.selectImage.bind(this)}>
                     {this.state.selectedImage === null
-                        ? <Text style={styles.selectdesp}>Please Select Image</Text>
+                        ? <View style={styles.selectdesp}><Text style={styles.desptxt}>Please Select Image</Text></View>
                         : <Image source={this.state.selectedImage} style={styles.pic}></Image>}
                 </TouchableOpacity>
-                <SaveButton
-                    backgroundColor={MKColor.Cyan}
-                    onPress={() => Alert.alert('Save Tips', 'Would You like to save the Image?', [
-                        {text: 'Three', onPress: () => ToastAndroid.show('click three', ToastAndroid.SHORT)},
-                        {text: 'YES', onPress: () => ToastAndroid.show('click one', ToastAndroid.SHORT)},
-                        {text: 'NO', onPress: () => ToastAndroid.show('click two', ToastAndroid.SHORT)}
-                    ])}>
-                    <Text style={styles.desp}>Save</Text>
-                </SaveButton>
-                <AddButton
-                    backgroundColor={MKColor.Cyan}
-                    onPress={this.selectImage.bind(this)}>
-                    <Image pointerEvents='none' source={require('../images/plus_white.png')} />
-                </AddButton>
+                <View style={styles.btn2}>
+                    <SaveButton
+                        backgroundColor={MKColor.Cyan}
+                        onPress={() => Alert.alert('Save Tips', 'Would You like to save the Image?', [
+                            {text: 'YES', onPress: () => ToastAndroid.show('click one', ToastAndroid.SHORT)},
+                            {text: 'NO', onPress: () => ToastAndroid.show('click two', ToastAndroid.SHORT)}
+                        ])}>
+                        <Text style={styles.desp}>Save</Text>
+                    </SaveButton>
+                </View>
+                <View style={styles.btn}>
+                    <AddButton
+                        backgroundColor={MKColor.Cyan}
+                        onPress={this.selectImage.bind(this)}>
+                        <Image pointerEvents='none' source={require('../images/plus_white.png')} />
+                    </AddButton>
+                </View>
             </View>
         );
     }
