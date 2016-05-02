@@ -5,6 +5,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
 import com.imagepicker.ImagePickerPackage; // react-native-image-picker
+import com.github.xinthink.rnmk.ReactMaterialKitPackage; // react-native-material-kit
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,8 +37,9 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-        new MainReactPackage()
-      , new ImagePickerPackage() // react-native-image-picker
+        new MainReactPackage(),
+        new ImagePickerPackage(), // react-native-image-picker
+        new ReactMaterialKitPackage() // react-native-material-kit
       );
     }
 }

@@ -5,3 +5,7 @@ include ':app'
 include ':react-native-image-picker'
 
 project(':react-native-image-picker').projectDir = new File(settingsDir, '../node_modules/react-native-image-picker/android')
+
+include ':RNMaterialKit'
+
+project(':RNMaterialKit').projectDir = file('../node_modules/react-native-material-kit/android')
