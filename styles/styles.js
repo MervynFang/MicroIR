@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,02 12:13:15
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,02 12:22:21
+* @Last modified time: 2016,May,02 22:22:40
 */
 
 import {StyleSheet, Platform} from 'react-native';
@@ -12,11 +12,11 @@ const styles =  StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#acd',
+        backgroundColor: '#fff',
     },
     pic: {
-        width: 400,
-        height: 300
+        width: 350,
+        height: 400
     },
     desp: {
         color: '#fff',
@@ -24,12 +24,19 @@ const styles =  StyleSheet.create({
         // backgroundColor: '#aed',
     },
     selectdesp: {
-        width: 400,
-        height: 300,
+        width: 350,
+        height: 400,
         fontSize: 30,
         textAlign: 'center',
         color: '#808080',
         backgroundColor: '#F2F2F5'
+    },
+    btn: {
+        
+    },
+    pop: {
+        flex: 1,
+        backgroundColor: '#00BCD4',
     }
 });
 

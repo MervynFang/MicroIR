@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,02 12:22:08
+* @Last modified time: 2016,May,02 22:27:55
 */
 
 import React, {
@@ -17,30 +17,35 @@ import React, {
     ToastAndroid,
     TouchableHighlight,
     TouchableOpacity
-    // NativeModules:{
-    //     ImagePickerManager
-    // }
 } from 'react-native';
 
 import {ImagePickerManager} from 'NativeModules';
 
-import {MKButton} from 'react-native-material-kit';
+import {MKButton, MKColor} from 'react-native-material-kit';
 
 import {styles} from '../styles/styles';
 
-const AddButton = MKButton.accentColoredFab()
+const AddButton = MKButton.coloredFab()
     // .withText('Add Pic')
     // .withOnPress(() => {
     //     this.selectImage();
     // })
     .build();
     
-const SaveButton = MKButton.accentColoredButton().build();
+const SaveButton = MKButton.coloredButton().build();
 
 class Main extends Component {
-    state = {
-        selectedImage: null
-    };
+
+    // state =  {
+    //     selectedImage: null
+    // };
+
+    constructor(props) {
+        super(props);
+        this.state =  {
+            selectedImage: null
+        };
+    }
 
     selectImage() {
         const options = {
@@ -98,14 +103,16 @@ class Main extends Component {
                         : <Image source={this.state.selectedImage} style={styles.pic}></Image>}
                 </TouchableOpacity>
                 <SaveButton
+                    backgroundColor={MKColor.Cyan}
                     onPress={() => Alert.alert('Save Tips', 'Would You like to save the Image?', [
                         {text: 'Three', onPress: () => ToastAndroid.show('click three', ToastAndroid.SHORT)},
                         {text: 'YES', onPress: () => ToastAndroid.show('click one', ToastAndroid.SHORT)},
                         {text: 'NO', onPress: () => ToastAndroid.show('click two', ToastAndroid.SHORT)}
                     ])}>
-                    <Text style={styles.desp}>The Button</Text>
+                    <Text style={styles.desp}>Save</Text>
                 </SaveButton>
                 <AddButton
+                    backgroundColor={MKColor.Cyan}
                     onPress={this.selectImage.bind(this)}>
                     <Image pointerEvents='none' source={require('../images/plus_white.png')} />
                 </AddButton>
