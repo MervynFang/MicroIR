@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,02 22:46:43
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 01:51:47
+* @Last modified time: 2016,May,03 02:46:18
 */
 
 import React, {
@@ -11,15 +11,12 @@ import React, {
     View,
     Image,
     Platform,
-    Dimensions,
     ToastAndroid,
     TouchableHighlight,
     TouchableOpacity
 } from 'react-native';
 
 import {styles} from '../styles/styles';
-
-let WINDOW_WIDTH = Dimensions.get('window').width;
 
 class Pop extends Component {
     render() {

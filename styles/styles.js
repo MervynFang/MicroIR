@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,02 12:13:15
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 02:21:32
+* @Last modified time: 2016,May,03 11:51:41
 */
 
 import {StyleSheet, Platform, Dimensions} from 'react-native';
@@ -18,7 +18,7 @@ const styles =  StyleSheet.create({
     },
     pic: {
         width: WINDOW_WIDTH,
-        height: 400
+        height: WINDOW_WIDTH / 3 * 4
     },
     desp: {
         color: '#fff',
@@ -27,7 +27,7 @@ const styles =  StyleSheet.create({
     },
     selectdesp: {
         width: WINDOW_WIDTH,
-        height: 400,
+        height: WINDOW_WIDTH / 3 * 4,
         backgroundColor: '#00BCD4',
     },
     desptxt: {
