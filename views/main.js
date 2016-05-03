@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 02:45:04
+* @Last modified time: 2016,May,03 15:25:39
 */
 
 import React, {
@@ -49,10 +49,10 @@ class Main extends Component {
 
     selectImage() {
         const options = {
-            title: 'Select Image',
+            title: 'Select Image From',
             cancelButtonTitle: 'Cancel',
-            // takePhotoButtonTitle: 'Take Photo...',
-            chooseFromLibraryButtonTitle: 'Select from Library',
+            // takePhotoButtonTitle: 'Camera',
+            chooseFromLibraryButtonTitle: 'Library',
             // quality: 0.5,
             // maxWidth: 300,
             // maxHeight: 300,
