@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,Apr,30 11:52:05
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,04 21:59:08
+* @Last modified time: 2016,May,05 02:13:21
 */
 
 'use strict';
@@ -41,7 +41,7 @@ class playwithrn extends Component {
             // return true;
             // ToastAndroid.show(outTag + '', ToastAndroid.SHORT);
             if (outTag < 1) {
-                var toast = ToastAndroid.show('再按一次退出MicroIR', ToastAndroid.SHORT);
+                var toast = ToastAndroid.show('Press again to exit MicroIR', ToastAndroid.SHORT);
                 outTag++;
                 setTimeout(
                     () => {

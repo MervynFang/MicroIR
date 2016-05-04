@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,04 21:34:43
+* @Last modified time: 2016,May,05 02:20:33
 */
 
 import React, {
@@ -25,15 +25,31 @@ import {MKButton, MKColor} from 'react-native-material-kit';
 
 import {styles} from '../styles/styles';
 
-const AddButton = MKButton.coloredFab()
-    .withBackgroundColor(MKColor.Cyan)
+const BasicButton = MKButton.coloredFab()
+    .withBackgroundColor('#11ab56')
     // .withText('Add Pic')
     // .withOnPress(() => {
     //     this.selectImage();
     // })
+    // .withShadowColor('black')
+    .withStyle({
+        width: 60,
+        height: 60,
+        // todo 这里开了chrome debug 卡顿，不过也没有关系啦
+        elevation: 0, // 去掉阴影
+    })
     .build();
-    
-const SaveButton = MKButton.coloredButton().withBackgroundColor(MKColor.Cyan).build();
+
+const MainButton = MKButton.coloredButton()
+    .withBackgroundColor(MKColor.Cyan)
+    .withStyle({
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        elevation: 0, // 去掉阴影
+    })
+    .build();
+
 
 class Main extends Component {
 
@@ -50,14 +66,14 @@ class Main extends Component {
 
     selectImage() {
         const options = {
-            title: 'Select Image From',
+            title: 'Please select image',
             cancelButtonTitle: 'Cancel',
-            // takePhotoButtonTitle: 'Camera',
-            chooseFromLibraryButtonTitle: 'Library',
+            takePhotoButtonTitle: 'Camera',
+            chooseFromLibraryButtonTitle: 'Gallery',
             // quality: 0.5,
             // maxWidth: 300,
             // maxHeight: 300,
-            allowsEditing: true
+            allowsEditing: false
         };
 
         ImagePickerManager.showImagePicker(options, (response) => {
@@ -93,6 +109,14 @@ class Main extends Component {
             }
         });
     }
+    
+    getObject(obj) {
+        let a = '';
+        for(let i in this.state.selectedImage){
+            a = a + i + ':' + this.state.selectedImage[i];
+        }
+        return a;
+    }
 
     render() {
         return (
@@ -100,23 +124,49 @@ class Main extends Component {
                 <TouchableOpacity
                     onPress={this.selectImage.bind(this)}>
                     {this.state.selectedImage === null
-                        ? <View style={styles.selectdesp}><Text style={styles.desptxt}>Please Select Image</Text></View>
+                        ? <View style={styles.selectdesp}><Text style={styles.desptxt}>Please select image</Text></View>
                         : <Image source={this.state.selectedImage} style={styles.pic}></Image>}
                 </TouchableOpacity>
                 <View style={styles.btn2}>
-                    <SaveButton
-                        onPress={() => Alert.alert('Save Tips', 'Would You like to save the Image?', [
-                            {text: 'YES', onPress: () => ToastAndroid.show('click one', ToastAndroid.SHORT)},
-                            {text: 'NO', onPress: () => ToastAndroid.show('click two', ToastAndroid.SHORT)}
-                        ])}>
-                        <Text style={styles.desp}>Save</Text>
-                    </SaveButton>
+                    <BasicButton
+                        onPress={() => {
+                            if (this.state.selectedImage === null) {
+                                ToastAndroid.show('Please select image', ToastAndroid.SHORT)
+                            } else {
+                                Alert.alert('Save to Gallery', 'Would you like to save to Gallery？', [
+                                    {
+                                        text: 'YES', 
+                                        onPress: () => {
+                                            ToastAndroid.show('Save succeed', ToastAndroid.SHORT)
+                                        }
+                                    },
+                                    {
+                                        text: 'NO', 
+                                        onPress: () => ToastAndroid.show('Save fail', ToastAndroid.SHORT)
+                                    }
+                                ]);
+                            }
+                        }}>
+                        <Image pointerEvents='none' style={styles.gall} source={require('../images/gallery.png')} />
+                    </BasicButton>
+                </View>
+                <View style={styles.mainbtn}>
+                    <MainButton
+                        onPress={() => {
+                            if (this.state.selectedImage === null) {
+                                ToastAndroid.show('Please select image', ToastAndroid.SHORT)
+                            } else {
+                                ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
+                            }
+                        }}>
+                        <Image pointerEvents='none' source={require('../images/main.png')} />
+                    </MainButton>
                 </View>
                 <View style={styles.btn}>
-                    <AddButton
+                    <BasicButton
                         onPress={this.selectImage.bind(this)}>
-                        <Image pointerEvents='none' source={require('../images/plus_white.png')} />
-                    </AddButton>
+                        <Image pointerEvents='none' style={styles.plus} source={require('../images/plus_white.png')} />
+                    </BasicButton>
                 </View>
             </View>
         );

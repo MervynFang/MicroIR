@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,02 12:13:15
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 11:51:41
+* @Last modified time: 2016,May,05 02:22:45
 */
 
 import {StyleSheet, Platform, Dimensions} from 'react-native';
@@ -20,11 +20,6 @@ const styles =  StyleSheet.create({
         width: WINDOW_WIDTH,
         height: WINDOW_WIDTH / 3 * 4
     },
-    desp: {
-        color: '#fff',
-        fontSize: 24,
-        // backgroundColor: '#aed',
-    },
     selectdesp: {
         width: WINDOW_WIDTH,
         height: WINDOW_WIDTH / 3 * 4,
@@ -36,7 +31,7 @@ const styles =  StyleSheet.create({
         textAlign: 'center',
         color: '#fff',
         position: 'absolute',
-        top: 150
+        top: 200
     },
     btn: {
         position: 'absolute',
@@ -47,6 +42,11 @@ const styles =  StyleSheet.create({
         position: 'absolute',
         bottom: 30,
         left: 20,
+    },
+    mainbtn: {
+        position: 'absolute',
+        bottom: 20,
+        left: WINDOW_WIDTH * 0.5 - 40
     },
     pop: {
         flex: 1,
@@ -65,7 +65,15 @@ const styles =  StyleSheet.create({
         left: WINDOW_WIDTH * 0.5 - 50,
         textAlign: 'center',
         color: '#fff'
-    }
+    },
+    plus: {
+        width: 20,
+        height: 20
+    },
+    gall: {
+        width: 27,
+        height: 27
+    },
 });
 
 export {styles};
