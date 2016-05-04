@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 15:25:39
+* @Last modified time: 2016,May,04 21:34:43
 */
 
 import React, {
@@ -26,13 +26,14 @@ import {MKButton, MKColor} from 'react-native-material-kit';
 import {styles} from '../styles/styles';
 
 const AddButton = MKButton.coloredFab()
+    .withBackgroundColor(MKColor.Cyan)
     // .withText('Add Pic')
     // .withOnPress(() => {
     //     this.selectImage();
     // })
     .build();
     
-const SaveButton = MKButton.coloredButton().build();
+const SaveButton = MKButton.coloredButton().withBackgroundColor(MKColor.Cyan).build();
 
 class Main extends Component {
 
@@ -104,7 +105,6 @@ class Main extends Component {
                 </TouchableOpacity>
                 <View style={styles.btn2}>
                     <SaveButton
-                        backgroundColor={MKColor.Cyan}
                         onPress={() => Alert.alert('Save Tips', 'Would You like to save the Image?', [
                             {text: 'YES', onPress: () => ToastAndroid.show('click one', ToastAndroid.SHORT)},
                             {text: 'NO', onPress: () => ToastAndroid.show('click two', ToastAndroid.SHORT)}
@@ -114,7 +114,6 @@ class Main extends Component {
                 </View>
                 <View style={styles.btn}>
                     <AddButton
-                        backgroundColor={MKColor.Cyan}
                         onPress={this.selectImage.bind(this)}>
                         <Image pointerEvents='none' source={require('../images/plus_white.png')} />
                     </AddButton>

@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react-native": "^0.20.0",
+    "react": "^0.14.8",
+    "react-native": "^0.24.1",
     "react-native-image-picker": "^0.18.15",
     "react-native-material-kit": "^0.3.1"
   }

@@ -2,27 +2,30 @@
 * @Author: Mervyn
 * @Date:   2016,Apr,30 11:52:05
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,03 02:06:10
+* @Last modified time: 2016,May,04 21:59:08
 */
 
 'use strict';
 import React, {
     AppRegistry,
     Component,
+    BackAndroid,
+    ToastAndroid,
     // StyleSheet,
     // Text,
     // View
 } from 'react-native';
 
 import {Main} from './views/main';
-import {Pop} from './views/pop'
+import {Pop} from './views/pop';
 
 class playwithrn extends Component {
 
     constructor(props) {
         super(props);
         this.state =  {
-            mainTag: false
+            mainTag: false,
+            // outTag: 0
         };
     }
 
@@ -32,6 +35,26 @@ class playwithrn extends Component {
                 this.setState({mainTag: true});
             },
         2000);
+        
+        let outTag = 0;
+        BackAndroid.addEventListener('hardwareBackPress', () => {
+            // return true;
+            // ToastAndroid.show(outTag + '', ToastAndroid.SHORT);
+            if (outTag < 1) {
+                var toast = ToastAndroid.show('再按一次退出MicroIR', ToastAndroid.SHORT);
+                outTag++;
+                setTimeout(
+                    () => {
+                        outTag = 0;
+                    },
+                1000);
+                return true;
+            } else {
+                // BackAndroid.exitApp();
+                // toast.cancel();
+                return false;
+            }
+        });
     }
 
     render() {
