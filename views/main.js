@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,05 02:20:33
+* @Last modified time: 2016,May,06 20:39:27
 */
 
 import React, {
@@ -135,14 +135,14 @@ class Main extends Component {
                             } else {
                                 Alert.alert('Save to Gallery', 'Would you like to save to Gallery？', [
                                     {
-                                        text: 'YES', 
+                                        text: 'Cancel',
+                                        onPress: () => ToastAndroid.show('Save fail', ToastAndroid.SHORT)
+                                    },
+                                    {
+                                        text: 'OK',
                                         onPress: () => {
                                             ToastAndroid.show('Save succeed', ToastAndroid.SHORT)
                                         }
-                                    },
-                                    {
-                                        text: 'NO', 
-                                        onPress: () => ToastAndroid.show('Save fail', ToastAndroid.SHORT)
                                     }
                                 ]);
                             }
