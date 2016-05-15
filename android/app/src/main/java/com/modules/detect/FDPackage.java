@@ -2,10 +2,23 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:58:43
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,14 23:34:35
+* @Last modified time: 2016,May,15 13:24:24
 */
 
-public class FDPackage implements ReactPackage {
+package com.modules.detect;
+
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class FdPackage implements ReactPackage {
     @Override
     public List<NativeModule> creatNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();

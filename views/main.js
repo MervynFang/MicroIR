@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,06 20:39:27
+* @Last modified time: 2016,May,15 13:09:53
 */
 
 import React, {
@@ -22,6 +22,8 @@ import React, {
 import {ImagePickerManager} from 'NativeModules';
 
 import {MKButton, MKColor} from 'react-native-material-kit';
+
+import {Cam} from '.views/cam';
 
 import {styles} from '../styles/styles';
 
@@ -150,18 +152,7 @@ class Main extends Component {
                         <Image pointerEvents='none' style={styles.gall} source={require('../images/gallery.png')} />
                     </BasicButton>
                 </View>
-                <View style={styles.mainbtn}>
-                    <MainButton
-                        onPress={() => {
-                            if (this.state.selectedImage === null) {
-                                ToastAndroid.show('Please select image', ToastAndroid.SHORT)
-                            } else {
-                                ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
-                            }
-                        }}>
-                        <Image pointerEvents='none' source={require('../images/main.png')} />
-                    </MainButton>
-                </View>
+                <Cam></Cam>
                 <View style={styles.btn}>
                     <BasicButton
                         onPress={this.selectImage.bind(this)}>
