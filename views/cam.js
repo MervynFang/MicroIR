@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 13:45:33
+* @Last modified time: 2016,May,15 17:39:57
 */
 
 import React, {
@@ -21,6 +21,7 @@ import React, {
 
 import {styles} from '../styles/styles';
 import {MKButton, MKColor} from 'react-native-material-kit';
+import {GetFaceDetect} from 'NativeModules';
 
 const MainButton = MKButton.coloredButton()
     .withBackgroundColor(MKColor.Cyan)
@@ -40,11 +41,17 @@ class Cam extends Component {
                 <MainButton
                     onPress={() => {
                         if (selectedImage === null) {
-                            ToastAndroid.show('Please select image', ToastAndroid.SHORT)
+                            GetFaceDetect.measureLayout(() => {
+                                console.log('fail');
+                            },(x, y, z, a) => {
+                                console.log('hello ' + x + y + z + a);
+                                ToastAndroid.show('hello ' + x + y + z + a, ToastAndroid.SHORT)
+                            })
                         } else {
                             ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
                         }
-                    }}>
+                    }
+                }>
                     <Image pointerEvents='none' source={require('../images/main.png')} />
                 </MainButton>
             </View>

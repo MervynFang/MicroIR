@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:58:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 12:01:15
+* @Last modified time: 2016,May,15 17:40:38
 */
 
 package com.modules.detect;
@@ -29,7 +29,7 @@ public class FaceDetectionModule extends ReactContextBaseJavaModule {
     public void measureLayout(Callback errorCallback,
                               Callback successCallback){
         try {
-            successCallback.invoke(100, 100, 200, 200);
+            successCallback.invoke(100, 100, 100, 100);
         } catch (IllegalViewOperationException e) {
             errorCallback.invoke(e.getMessage());
         }
