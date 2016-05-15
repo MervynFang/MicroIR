@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 13:09:53
+* @Last modified time: 2016,May,15 13:45:13
 */
 
 import React, {
@@ -23,7 +23,7 @@ import {ImagePickerManager} from 'NativeModules';
 
 import {MKButton, MKColor} from 'react-native-material-kit';
 
-import {Cam} from '.views/cam';
+import {Cam} from './cam';
 
 import {styles} from '../styles/styles';
 
@@ -38,16 +38,6 @@ const BasicButton = MKButton.coloredFab()
         width: 60,
         height: 60,
         // todo 这里开了chrome debug 卡顿，不过也没有关系啦
-        elevation: 0, // 去掉阴影
-    })
-    .build();
-
-const MainButton = MKButton.coloredButton()
-    .withBackgroundColor(MKColor.Cyan)
-    .withStyle({
-        width: 80,
-        height: 80,
-        borderRadius: 40,
         elevation: 0, // 去掉阴影
     })
     .build();
@@ -152,7 +142,7 @@ class Main extends Component {
                         <Image pointerEvents='none' style={styles.gall} source={require('../images/gallery.png')} />
                     </BasicButton>
                 </View>
-                <Cam></Cam>
+                <Cam selectedImage={this.state.selectedImage}></Cam>
                 <View style={styles.btn}>
                     <BasicButton
                         onPress={this.selectImage.bind(this)}>

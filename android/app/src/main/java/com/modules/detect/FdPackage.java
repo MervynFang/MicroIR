@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,15 13:32:04
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 13:32:11
+* @Last modified time: 2016,May,15 13:35:06
 */
 
 package com.modules.detect;
@@ -19,8 +19,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class FdPackage implements ReactPackage {
-    // @Override
-    public List<NativeModule> creatNativeModules(ReactApplicationContext reactContext) {
+    @Override
+    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new FaceDetectionModule(reactContext));
         return modules;
