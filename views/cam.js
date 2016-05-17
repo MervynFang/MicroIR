@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 17:39:57
+* @Last modified time: 2016,May,16 21:45:38
 */
 
 import React, {
@@ -22,7 +22,9 @@ import React, {
 import {styles} from '../styles/styles';
 import {MKButton, MKColor} from 'react-native-material-kit';
 import {GetFaceDetect} from 'NativeModules';
+import RNFetchBlob from 'react-native-fetch-blob';
 
+const apiKey = '';
 const MainButton = MKButton.coloredButton()
     .withBackgroundColor(MKColor.Cyan)
     .withStyle({
@@ -56,6 +58,37 @@ class Cam extends Component {
                 </MainButton>
             </View>
         );
+    }
+    
+    detectFace() {
+        RNFetchBlob.fetch(
+            'POST',
+            'https://api.projectoxford.ai/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender',
+            {
+        		'Accept': 'application/json',
+        	    'Content-Type': 'application/octet-stream',
+        	    'Ocp-Apim-Subscription-Key': apiKey
+        	},
+            this.state.photo_data)
+    	.then((res) => {
+    		return res.json();		
+    	})
+    	.then((json) => {
+    		
+    		if(json.length){
+    			this.setState({
+    				face_data: json
+    			});
+    		}else{
+    			alert("Sorry, I can't see any faces in there.");
+    		}
+    		
+    		return json;
+    	})
+    	.catch (function (error) {
+    		console.log(error);
+        	alert('Sorry, the request failed. Please try again.' + JSON.stringify(error));
+    	});
     }
 }
 
