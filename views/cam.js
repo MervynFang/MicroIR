@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,16 21:45:38
+* @Last modified time: 2016,May,18 13:35:55
 */
 
 import React, {
@@ -22,9 +22,10 @@ import React, {
 import {styles} from '../styles/styles';
 import {MKButton, MKColor} from 'react-native-material-kit';
 import {GetFaceDetect} from 'NativeModules';
-import RNFetchBlob from 'react-native-fetch-blob';
 
-const apiKey = '';
+import {RNFetchBlob} from 'react-native-fetch-blob';
+
+const apiKey = '5417afc042b34cf6b2da1ca0e9e42d8a';
 const MainButton = MKButton.coloredButton()
     .withBackgroundColor(MKColor.Cyan)
     .withStyle({
@@ -69,7 +70,7 @@ class Cam extends Component {
         	    'Content-Type': 'application/octet-stream',
         	    'Ocp-Apim-Subscription-Key': apiKey
         	},
-            this.state.photo_data)
+            this.props.imageData)
     	.then((res) => {
     		return res.json();		
     	})
@@ -77,7 +78,7 @@ class Cam extends Component {
     		
     		if(json.length){
     			this.setState({
-    				face_data: json
+    				faceData: json
     			});
     		}else{
     			alert("Sorry, I can't see any faces in there.");

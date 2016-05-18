@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 13:45:13
+* @Last modified time: 2016,May,18 13:33:44
 */
 
 import React, {
@@ -52,7 +52,9 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state =  {
-            selectedImage: null
+            selectedImage: null,
+            imageData: null,
+            faceData: null
         };
     }
 
@@ -87,16 +89,18 @@ class Main extends Component {
                 // You can display the image using either:
                 //const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
 
-                var source;
+                var source, image;
                 if (Platform.OS === 'android') {
                     source = {uri: response.uri, isStatic: true};
+                    image = response.data;
 
                 } else {
                     source = {uri: response.uri.replace('file://', ''), isStatic: true};
                 }
 
                 this.setState({
-                    selectedImage: source
+                    selectedImage: source,
+                    imageData: image
                 });
             }
         });
@@ -142,7 +146,7 @@ class Main extends Component {
                         <Image pointerEvents='none' style={styles.gall} source={require('../images/gallery.png')} />
                     </BasicButton>
                 </View>
-                <Cam selectedImage={this.state.selectedImage}></Cam>
+                <Cam selectedImage={this.state.selectedImage} imageData={this.state.selectedImage}></Cam>
                 <View style={styles.btn}>
                     <BasicButton
                         onPress={this.selectImage.bind(this)}>
