@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,18 13:33:44
+* @Last modified time: 2016,May,19 03:53:20
 */
 
 import React, {
@@ -67,7 +67,9 @@ class Main extends Component {
             // quality: 0.5,
             // maxWidth: 300,
             // maxHeight: 300,
-            allowsEditing: false
+            allowsEditing: false,
+            aspectX: 3, // android only - aspectX:aspectY, the cropping image's ratio of width to height
+            aspectY: 4, // andr
         };
 
         ImagePickerManager.showImagePicker(options, (response) => {
@@ -91,9 +93,9 @@ class Main extends Component {
 
                 var source, image;
                 if (Platform.OS === 'android') {
-                    source = {uri: response.uri, isStatic: true};
+                    source = {uri: 'file://' + response.path, isStatic: true};
+                    console.log(source);
                     image = response.data;
-
                 } else {
                     source = {uri: response.uri.replace('file://', ''), isStatic: true};
                 }
@@ -121,7 +123,7 @@ class Main extends Component {
                     onPress={this.selectImage.bind(this)}>
                     {this.state.selectedImage === null
                         ? <View style={styles.selectdesp}><Text style={styles.desptxt}>Please select image</Text></View>
-                        : <Image source={this.state.selectedImage} style={styles.pic}></Image>}
+                        : <Image source={this.state.selectedImage} resizeMode={Image.resizeMode.contain} style={styles.pic}></Image>}
                 </TouchableOpacity>
                 <View style={styles.btn2}>
                     <BasicButton
@@ -146,13 +148,14 @@ class Main extends Component {
                         <Image pointerEvents='none' style={styles.gall} source={require('../images/gallery.png')} />
                     </BasicButton>
                 </View>
-                <Cam selectedImage={this.state.selectedImage} imageData={this.state.selectedImage}></Cam>
+                <Cam selectedImage={this.state.selectedImage} imageData={this.state.imageData}></Cam>
                 <View style={styles.btn}>
                     <BasicButton
                         onPress={this.selectImage.bind(this)}>
                         <Image pointerEvents='none' style={styles.plus} source={require('../images/plus_white.png')} />
                     </BasicButton>
                 </View>
+                
             </View>
         );
     }
