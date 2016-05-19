@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 23:28:52
+* @Last modified time: 2016,May,20 00:39:19
 */
 
 import React, {
@@ -29,7 +29,7 @@ import {Cam} from './cam';
 import {styles} from '../styles/styles';
 
 const BasicButton = MKButton.coloredFab()
-    .withBackgroundColor('#11ab56')
+    .withBackgroundColor(MKColor.Cyan)
     // .withText('Add Pic')
     // .withOnPress(() => {
     //     this.selectImage();
