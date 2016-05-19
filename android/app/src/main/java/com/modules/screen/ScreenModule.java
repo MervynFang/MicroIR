@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:58:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 23:24:43
+* @Last modified time: 2016,May,20 00:20:02
 */
 
 package com.modules.screen;
@@ -41,7 +41,8 @@ public class ScreenModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void screenShot() {
         // 获取当前的activity
-        Activity currentActivity = getCurrentActivity();
+        Activity currentActivity = new Activity();
+        currentActivity = getCurrentActivity();
         
         View view = currentActivity.getWindow().getDecorView();
         view.buildDrawingCache();
@@ -54,6 +55,8 @@ public class ScreenModule extends ReactContextBaseJavaModule {
         
         // 生成bitmap
         Bitmap Bmp = Bitmap.createBitmap(view.getDrawingCache(), 0, 0, widths, heights);
+        // 去除缓存，不然之后的每次截图都一样
+        view.destroyDrawingCache();
         // 文件名
         String filename = "ScreenShot-" + UUID.randomUUID().toString() + ".png";
         // 路径
