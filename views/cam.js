@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 14:08:56
+* @Last modified time: 2016,May,19 17:53:26
 */
 
 import React, {
@@ -23,8 +23,9 @@ import React, {
 import {styles} from '../styles/styles';
 import {MKButton, MKColor} from 'react-native-material-kit';
 import {GetFaceDetect} from 'NativeModules';
-
-import RNFetchBlob from 'react-native-fetch-blob';
+import Base64 from 'base-64';
+// import RNFetchBlob from 'react-native-fetch-blob';
+import {RNFetchBlob} from 'NativeModules';
 
 let WINDOW_WIDTH = Dimensions.get('window').width;
 const apiKey = '5417afc042b34cf6b2da1ca0e9e42d8a';
@@ -55,12 +56,7 @@ class Cam extends Component {
                         <MainButton
                             onPress={() => {
                                 if (selectedImage === null) {
-                                    GetFaceDetect.measureLayout(() => {
-                                        console.log('fail');
-                                    },(x, y, z, a) => {
-                                        console.log('hello ' + x + y + z + a);
-                                        ToastAndroid.show('hello ' + x + y + z + a, ToastAndroid.SHORT)
-                                    })
+                                    ToastAndroid.show('Please select image', ToastAndroid.SHORT)
                                 } else {
                                     ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
                                     this.detectFace();
@@ -78,36 +74,61 @@ class Cam extends Component {
     }
     
     detectFace() {
-        RNFetchBlob.fetch(
-            'POST',
+        // RNFetchBlob.fetch(
+        //     'POST',
+        //     'https://api.projectoxford.ai/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender',
+        //     {
+        // 		'Accept': 'application/json',
+        // 	    'Content-Type': 'application/octet-stream',
+        // 	    'Ocp-Apim-Subscription-Key': apiKey
+        // 	},
+        //     this.props.imageData)
+    	// .then((res) => {
+    	// 	return res.json();
+    	// })
+    	// .then((json) => {
+    	// 	
+    	// 	if(json.length){
+        //         console.log(json);
+        //         this.props.handleState();
+    	// 		this.setState({
+    	// 			faceData: json
+    	// 		});
+    	// 	}else{
+    	// 		alert("Can't detect any face");
+    	// 	}
+    	// 	
+    	// 	return json;
+    	// })
+    	// .catch (function (error) {
+    	// 	console.log(error);
+        // 	alert(error);
+    	// });
+        RNFetchBlob.fetchBlob('POST',
             'https://api.projectoxford.ai/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender',
             {
-        		'Accept': 'application/json',
-        	    'Content-Type': 'application/octet-stream',
-        	    'Ocp-Apim-Subscription-Key': apiKey
-        	},
-            this.props.imageData)
-    	.then((res) => {
-    		return res.json();		
-    	})
-    	.then((json) => {
-    		
-    		if(json.length){
-                console.log(json);
-                this.props.handleState();
-    			this.setState({
-    				faceData: json
-    			});
-    		}else{
-    			alert("Can't detect any face");
-    		}
-    		
-    		return json;
-    	})
-    	.catch (function (error) {
-    		console.log(error);
-        	alert('NetWork Failure');
-    	});
+		        'Accept': 'application/json',
+                'Content-Type': 'application/octet-stream',
+                'Ocp-Apim-Subscription-Key': apiKey
+            },
+            this.props.imageData, (err, data) => {
+            if(err) {
+                alert(err);
+            } else {
+                // console.log(data, Base64Code.decode(data));
+                let fData = JSON.parse(Base64.decode(data));
+            	if(fData.length){
+                    console.log(fData);
+                    this.props.handleState();
+        			this.setState({
+        				faceData: fData
+        			});
+        		}else{
+        			alert("Can't detect any face");
+        		}
+            }
+                
+        });
     }
     
     renderArea() {
