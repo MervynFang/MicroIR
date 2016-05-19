@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:58:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 23:13:48
+* @Last modified time: 2016,May,19 23:24:43
 */
 
 package com.modules.screen;
@@ -40,23 +40,29 @@ public class ScreenModule extends ReactContextBaseJavaModule {
     
     @ReactMethod
     public void screenShot() {
+        // 获取当前的activity
         Activity currentActivity = getCurrentActivity();
         
         View view = currentActivity.getWindow().getDecorView();
         view.buildDrawingCache();
         view.setDrawingCacheEnabled(true);
         
+        // 获取display
         Display display = currentActivity.getWindowManager().getDefaultDisplay();
         int widths = display.getWidth();
         int heights = display.getHeight();
         
+        // 生成bitmap
         Bitmap Bmp = Bitmap.createBitmap(view.getDrawingCache(), 0, 0, widths, heights);
-   
+        // 文件名
         String filename = "ScreenShot-" + UUID.randomUUID().toString() + ".png";
+        // 路径
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        // 生成文件
         File file = new File(path, filename);
         
         try {
+            // 输出文件
             FileOutputStream fos = new FileOutputStream(file);
             Bmp.compress(Bitmap.CompressFormat.PNG, 90, fos);  
             fos.flush();

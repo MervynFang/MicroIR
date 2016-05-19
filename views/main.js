@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 23:18:33
+* @Last modified time: 2016,May,19 23:28:52
 */
 
 import React, {
@@ -53,12 +53,12 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state =  {
-            selectedImage: null,
-            imageData: null,
-            faceData: null,
-            imageWidth: null,
-            imageHeight: null,
-            regTag: 0
+            selectedImage: null, // 选中图片的路径
+            imageData: null, // 图像的base64数据
+            faceData: null, // 脸部的数据 json
+            imageWidth: null, // 图片原来的宽度
+            imageHeight: null, // 图片原来的高度
+            regTag: 0 // 是否显示识别框
         };
     }
 
@@ -73,7 +73,7 @@ class Main extends Component {
             // maxHeight: 300,
             allowsEditing: false,
             aspectX: 3, // android only - aspectX:aspectY, the cropping image's ratio of width to height
-            aspectY: 4, // andr
+            aspectY: 4, // android only
         };
 
         ImagePickerManager.showImagePicker(options, (response) => {

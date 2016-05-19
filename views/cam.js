@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 17:53:26
+* @Last modified time: 2016,May,19 23:28:08
 */
 
 import React, {
@@ -22,7 +22,7 @@ import React, {
 
 import {styles} from '../styles/styles';
 import {MKButton, MKColor} from 'react-native-material-kit';
-import {GetFaceDetect} from 'NativeModules';
+
 import Base64 from 'base-64';
 // import RNFetchBlob from 'react-native-fetch-blob';
 import {RNFetchBlob} from 'NativeModules';
@@ -104,6 +104,8 @@ class Cam extends Component {
     	// 	console.log(error);
         // 	alert(error);
     	// });
+        
+        // 上面是nodejs直接引入，下面是 java 的 react method
         RNFetchBlob.fetchBlob('POST',
             'https://api.projectoxford.ai/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender',
             {
@@ -116,6 +118,7 @@ class Cam extends Component {
                 alert(err);
             } else {
                 // console.log(data, Base64Code.decode(data));
+                // RN 不支持 atob btoa blob 用了一个base-64的库
                 let fData = JSON.parse(Base64.decode(data));
             	if(fData.length){
                     console.log(fData);
@@ -141,7 +144,7 @@ class Cam extends Component {
                     console.log(key.faceRectangle);
                     let box = {
                         position: 'absolute',
-                        top: key.faceRectangle.top  * WINDOW_WIDTH / iW + (WINDOW_WIDTH / 3 * 4 - iH * WINDOW_WIDTH / iW) / 2,
+                        top: key.faceRectangle.top  * WINDOW_WIDTH / iW + (WINDOW_WIDTH / 3 * 4 - iH * WINDOW_WIDTH / iW) / 2, // 单位换算比较烦
                         left: key.faceRectangle.left * WINDOW_WIDTH / iW,
                         width: key.faceRectangle.width  * WINDOW_WIDTH / iW,
                         height: key.faceRectangle.height  * WINDOW_WIDTH / iW,
