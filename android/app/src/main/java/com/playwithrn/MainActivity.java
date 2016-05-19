@@ -6,7 +6,7 @@ import com.facebook.react.shell.MainReactPackage;
 
 import com.imagepicker.ImagePickerPackage; // react-native-image-picker
 import com.github.xinthink.rnmk.ReactMaterialKitPackage; // react-native-material-kit
-import com.modules.detect.FdPackage; // face detection module
+import com.modules.screen.ScreenPackage; // face detection module
 import com.RNFetchBlob.RNFetchBlobPackage;
 
 import java.util.Arrays;
@@ -42,7 +42,7 @@ public class MainActivity extends ReactActivity {
             new MainReactPackage(),
             new ImagePickerPackage(), // react-native-image-picker
             new ReactMaterialKitPackage(), // react-native-material-kit
-            new FdPackage(), // face detection module
+            new ScreenPackage(), // screen module
             new RNFetchBlobPackage()
         );
     }

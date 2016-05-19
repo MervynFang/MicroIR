@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 13:34:06
+* @Last modified time: 2016,May,19 23:18:33
 */
 
 import React, {
@@ -20,6 +20,7 @@ import React, {
 } from 'react-native';
 
 import {ImagePickerManager} from 'NativeModules';
+import {Screen} from 'NativeModules';
 
 import {MKButton, MKColor} from 'react-native-material-kit';
 
@@ -155,7 +156,8 @@ class Main extends Component {
                                     {
                                         text: 'OK',
                                         onPress: () => {
-                                            ToastAndroid.show('Save succeed', ToastAndroid.SHORT)
+                                            ToastAndroid.show('Save succeed', ToastAndroid.SHORT);
+                                            Screen.screenShot();
                                         }
                                     }
                                 ]);

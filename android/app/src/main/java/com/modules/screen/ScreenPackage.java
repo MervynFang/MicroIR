@@ -2,10 +2,10 @@
 * @Author: Mervyn
 * @Date:   2016,May,15 13:32:04
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,15 13:35:06
+* @Last modified time: 2016,May,19 23:14:09
 */
 
-package com.modules.detect;
+package com.modules.screen;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -18,11 +18,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class FdPackage implements ReactPackage {
+public class ScreenPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new FaceDetectionModule(reactContext));
+        modules.add(new ScreenModule(reactContext));
         return modules;
     }
     
