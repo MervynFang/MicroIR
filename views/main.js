@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 03:53:20
+* @Last modified time: 2016,May,19 13:34:06
 */
 
 import React, {
@@ -54,7 +54,10 @@ class Main extends Component {
         this.state =  {
             selectedImage: null,
             imageData: null,
-            faceData: null
+            faceData: null,
+            imageWidth: null,
+            imageHeight: null,
+            regTag: 0
         };
     }
 
@@ -102,7 +105,10 @@ class Main extends Component {
 
                 this.setState({
                     selectedImage: source,
-                    imageData: image
+                    imageData: image,
+                    imageWidth: response.width,
+                    imageHeight: response.height,
+                    regTag: 0
                 });
             }
         });
@@ -115,6 +121,12 @@ class Main extends Component {
         }
         return a;
     }
+    
+    handleState() {
+        this.setState({
+            regTag: 1
+        });
+    }
 
     render() {
         return (
@@ -122,8 +134,12 @@ class Main extends Component {
                 <TouchableOpacity
                     onPress={this.selectImage.bind(this)}>
                     {this.state.selectedImage === null
-                        ? <View style={styles.selectdesp}><Text style={styles.desptxt}>Please select image</Text></View>
-                        : <Image source={this.state.selectedImage} resizeMode={Image.resizeMode.contain} style={styles.pic}></Image>}
+                        ? <View style={styles.selectdesp}>
+                            <Text style={styles.desptxt}>Please select image</Text></View>
+                        : <Image 
+                            source={this.state.selectedImage} 
+                            resizeMode={Image.resizeMode.contain} 
+                            style={styles.pic}></Image>}
                 </TouchableOpacity>
                 <View style={styles.btn2}>
                     <BasicButton
@@ -145,14 +161,26 @@ class Main extends Component {
                                 ]);
                             }
                         }}>
-                        <Image pointerEvents='none' style={styles.gall} source={require('../images/gallery.png')} />
+                        <Image 
+                            pointerEvents='none' 
+                            style={styles.gall} 
+                            source={require('../images/gallery.png')} />
                     </BasicButton>
                 </View>
-                <Cam selectedImage={this.state.selectedImage} imageData={this.state.imageData}></Cam>
+                <Cam 
+                    selectedImage={this.state.selectedImage} 
+                    imageData={this.state.imageData} 
+                    imageWidth={this.state.imageWidth} 
+                    imageHeight={this.state.imageHeight} 
+                    regTag={this.state.regTag} 
+                    handleState={this.handleState.bind(this)}></Cam>
                 <View style={styles.btn}>
                     <BasicButton
                         onPress={this.selectImage.bind(this)}>
-                        <Image pointerEvents='none' style={styles.plus} source={require('../images/plus_white.png')} />
+                        <Image 
+                            pointerEvents='none' 
+                            style={styles.plus} 
+                            source={require('../images/plus_white.png')} />
                     </BasicButton>
                 </View>
                 

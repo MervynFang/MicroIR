@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,02 12:13:15
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 03:07:21
+* @Last modified time: 2016,May,19 11:33:58
 */
 
 import {StyleSheet, Platform, Dimensions} from 'react-native';

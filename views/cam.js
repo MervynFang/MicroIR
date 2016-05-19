@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 03:09:12
+* @Last modified time: 2016,May,19 13:32:35
 */
 
 import React, {
@@ -13,6 +13,7 @@ import React, {
     Alert,
     ScrollView,
     Image,
+    Dimensions,
     Platform,
     ToastAndroid,
     TouchableHighlight,
@@ -25,6 +26,7 @@ import {GetFaceDetect} from 'NativeModules';
 
 import RNFetchBlob from 'react-native-fetch-blob';
 
+let WINDOW_WIDTH = Dimensions.get('window').width;
 const apiKey = '5417afc042b34cf6b2da1ca0e9e42d8a';
 const MainButton = MKButton.coloredButton()
     .withBackgroundColor(MKColor.Cyan)
@@ -48,29 +50,30 @@ class Cam extends Component {
     render() {
         let selectedImage = this.props.selectedImage;
         return (
-            <View style={styles.all}>
-                <View style={styles.mainbtn}>
-                    <MainButton
-                        onPress={() => {
-                            if (selectedImage === null) {
-                                GetFaceDetect.measureLayout(() => {
-                                    console.log('fail');
-                                },(x, y, z, a) => {
-                                    console.log('hello ' + x + y + z + a);
-                                    ToastAndroid.show('hello ' + x + y + z + a, ToastAndroid.SHORT)
-                                })
-                            } else {
-                                ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
-                                this.detectFace();
+                <View style={styles.all}>
+                    <View style={styles.mainbtn}>
+                        <MainButton
+                            onPress={() => {
+                                if (selectedImage === null) {
+                                    GetFaceDetect.measureLayout(() => {
+                                        console.log('fail');
+                                    },(x, y, z, a) => {
+                                        console.log('hello ' + x + y + z + a);
+                                        ToastAndroid.show('hello ' + x + y + z + a, ToastAndroid.SHORT)
+                                    })
+                                } else {
+                                    ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
+                                    this.detectFace();
+                                }
                             }
-                        }
-                    }>
-                    <Image pointerEvents='none' source={require('../images/main.png')} />
-                </MainButton>
+                        }>
+                        <Image 
+                            pointerEvents='none' 
+                            source={require('../images/main.png')} />
+                    </MainButton>
+                </View>
+                {this.props.regTag === 0 ? <View></View> : this.renderArea.call(this)}
             </View>
-            {this.renderArea.call(this)}
-        </View>
-
         );
     }
     
@@ -91,6 +94,7 @@ class Cam extends Component {
     		
     		if(json.length){
                 console.log(json);
+                this.props.handleState();
     			this.setState({
     				faceData: json
     			});
@@ -108,36 +112,66 @@ class Cam extends Component {
     
     renderArea() {
         let views = [];
+        let iH = this.props.imageHeight;
+        let iW = this.props.imageWidth;
         if (this.state.faceData !== null) {
-            this.state.faceData.map((key,index) => {
-                console.log(key.faceRectangle);
-                let box = {
-        			position: 'absolute',
-    			    top: key.faceRectangle.top,
-    				left: key.faceRectangle.left,
-                    width: key.faceRectangle.width,
-    				height: key.faceRectangle.height,
-    				borderWidth: 2,
-    				borderColor: '#fff',
-        	    };
-
-    			let style = { 
-    				width: 10,
-    				height: 10,
-
-                    backgroundColor: '#000'
-    			};
-                
-                views.push(
-    		    	<View key={key.faceId} style={box}></View>
-    		    );
-                
-                // return  <View style={{width: 10, height: 10, backgroundColor: '#000'}}></View>
-                
-            });
-            
-            // return <View>{views}</View>
-            return  views;
+            if (iW / 3 * 4 >= iH) {
+                this.state.faceData.map((key,index) => {
+                    console.log(key.faceRectangle);
+                    let box = {
+                        position: 'absolute',
+                        top: key.faceRectangle.top  * WINDOW_WIDTH / iW + (WINDOW_WIDTH / 3 * 4 - iH * WINDOW_WIDTH / iW) / 2,
+                        left: key.faceRectangle.left * WINDOW_WIDTH / iW,
+                        width: key.faceRectangle.width  * WINDOW_WIDTH / iW,
+                        height: key.faceRectangle.height  * WINDOW_WIDTH / iW,
+                        borderWidth: 2,
+                        borderColor: '#fff',
+                    };
+                    
+                    // let style = { 
+                    //     width: 10,
+                    //     height: 10,
+                    //     backgroundColor: '#000'
+                    // };
+                    
+                    views.push(
+                        <View key={key.faceId} style={box}></View>
+                    );
+                    
+                    // can't write like this
+                    // return  <View style={{width: 10, height: 10, backgroundColor: '#000'}}></View>
+                });
+                // return <View>{views}</View>
+                return  views;
+            } else {
+                this.state.faceData.map((key,index) => {
+                    console.log(key.faceRectangle);
+                    let box = {
+                        position: 'absolute',
+                        top: key.faceRectangle.top * WINDOW_WIDTH / 3 * 4 / iH,
+                        left: key.faceRectangle.left * WINDOW_WIDTH / 3 * 4 / iH + (WINDOW_WIDTH - iW * WINDOW_WIDTH / 3 * 4 / iH) / 2,
+                        width: key.faceRectangle.width * WINDOW_WIDTH / 3 * 4 / iH,
+                        height: key.faceRectangle.height * WINDOW_WIDTH / 3 * 4 / iH,
+                        borderWidth: 2,
+                        borderColor: '#fff',
+                    };
+                    
+                    // let style = { 
+                    //     width: 10,
+                    //     height: 10,
+                    //     backgroundColor: '#000'
+                    // };
+                    
+                    views.push(
+                        <View key={key.faceId} style={box}></View>
+                    );
+                    
+                    // can't write like this
+                    // return  <View style={{width: 10, height: 10, backgroundColor: '#000'}}></View>
+                });
+                // return <View>{views}</View>
+                return  views;
+            }
         }
     }
 }
