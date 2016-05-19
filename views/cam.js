@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,May,19 13:32:35
+* @Last modified time: 2016,May,19 14:08:56
 */
 
 import React, {
@@ -99,14 +99,14 @@ class Cam extends Component {
     				faceData: json
     			});
     		}else{
-    			alert("Sorry, I can't see any faces in there.");
+    			alert("Can't detect any face");
     		}
     		
     		return json;
     	})
     	.catch (function (error) {
     		console.log(error);
-        	alert('Sorry, the request failed. Please try again.' + JSON.stringify(error));
+        	alert('NetWork Failure');
     	});
     }
     
