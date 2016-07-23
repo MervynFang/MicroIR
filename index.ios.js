@@ -1,4 +1,11 @@
 /**
+* @Author: Mervyn
+* @Date:   2016,Feb,27 21:47:14
+* @Last modified by:   Mervyn
+* @Last modified time: 2016,Jul,23 22:33:43
+*/
+
+/**
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
@@ -10,6 +17,9 @@ import React, {
   Text,
   View
 } from 'react-native';
+
+import {Main} from './views/main';
+import {Pop} from './views/pop';
 
 class playwithrn extends Component {
   render() {
