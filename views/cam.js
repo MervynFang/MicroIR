@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Jul,30 09:54:51
+* @Last modified time: 2016,Jul,30 10:56:26
 */
 
 import React, { Component } from 'react';
@@ -67,10 +67,10 @@ class Cam extends Component {
           <Image 
             pointerEvents='none' 
             source={require('../images/main.png')} />
-        </MainButton>
+          </MainButton>
+        </View>
+        {this.props.regTag === 0 ? <View></View> : this.renderArea.call(this)}
       </View>
-      {this.props.regTag === 0 ? <View></View> : this.renderArea.call(this)}
-    </View>
     );
   }
   
