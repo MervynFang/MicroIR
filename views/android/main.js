@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Aug,01 00:36:19
+* @Last modified time: 2016,Aug,01 01:07:47
 */
 
 import React, { Component } from 'react';
@@ -27,7 +27,7 @@ import {MKButton, MKColor} from 'react-native-material-kit';
 
 import {Cam} from './cam';
 
-import {styles} from '../styles/styles';
+import {styles} from '../../styles/styles';
 
 const BasicButton = MKButton.coloredFab()
     .withBackgroundColor(MKColor.Cyan)
@@ -169,7 +169,7 @@ class Main extends Component {
             <Image 
               pointerEvents='none' 
               style={styles.gall} 
-              source={require('../images/gallery.png')} />
+              source={require('../../images/gallery.png')} />
           </BasicButton>
         </View>
         <Cam 
@@ -185,7 +185,7 @@ class Main extends Component {
             <Image 
               pointerEvents='none' 
               style={styles.plus} 
-              source={require('../images/plus_white.png')} />
+              source={require('../../images/plus_white.png')} />
           </BasicButton>
         </View>
       </View>

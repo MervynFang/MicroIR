@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,Apr,30 11:52:05
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Jul,31 12:35:10
+* @Last modified time: 2016,Aug,01 01:02:40
 */
 
 'use strict';
@@ -14,8 +14,8 @@ import {
   ToastAndroid,
 } from 'react-native';
 
-import {Main} from './views/main';
-import {Pop} from './views/pop';
+import {Main} from './views/android/main';
+import {Pop} from './views/android/pop';
 
 class playwithrn extends Component {
 

@@ -10,7 +10,7 @@
     "react": "^15.2.0",
     "react-native": "^0.30.0",
     "react-native-fetch-blob": "^0.3.1",
-    "react-native-image-picker": "^0.18.15",
+    "react-native-image-picker": "^0.21.4",
     "react-native-material-kit": "^0.3.2"
   }
 }
