@@ -2,20 +2,16 @@
 * @Author: Mervyn
 * @Date:   2016,Apr,30 11:52:05
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Jul,30 09:41:49
+* @Last modified time: 2016,Jul,31 12:35:10
 */
 
 'use strict';
-
 import React, { Component } from 'react';
 
 import {
   AppRegistry,
   BackAndroid,
   ToastAndroid,
-  // StyleSheet,
-  // Text,
-  // View
 } from 'react-native';
 
 import {Main} from './views/main';
@@ -60,6 +56,7 @@ class playwithrn extends Component {
   }
 
   render() {
+    
     if (this.state.mainTag) {
       return (
         <Main></Main>
