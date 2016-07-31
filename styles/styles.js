@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,02 12:13:15
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Jul,30 09:45:01
+* @Last modified time: 2016,Aug,01 00:39:16
 */
 
 import {StyleSheet, Platform, Dimensions} from 'react-native';
@@ -49,10 +49,17 @@ const styles =  StyleSheet.create({
     bottom: 20,
     left: WINDOW_WIDTH * 0.5 - 40
   },
-  all: {
+  allAndroid: {
     position: 'absolute',
     width: WINDOW_WIDTH,
     height: WINDOW_HEIGHT - 25,
+    top: 0,
+    left: 0,
+  },
+  allIOS: {
+    position: 'absolute',
+    width: WINDOW_WIDTH,
+    height: WINDOW_HEIGHT,
     top: 0,
     left: 0,
   },

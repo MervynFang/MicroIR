@@ -2,7 +2,7 @@
 * @Author: Mervyn
 * @Date:   2016,May,12 22:53:28
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Jul,30 10:56:26
+* @Last modified time: 2016,Aug,01 00:41:15
 */
 
 import React, { Component } from 'react';
@@ -51,27 +51,53 @@ class Cam extends Component {
   
   render() {
     let selectedImage = this.props.selectedImage;
-    return (
-      <View style={styles.all}>
-        <View style={styles.mainbtn}>
-          <MainButton
-            onPress={() => {
-              if (selectedImage === null) {
-                ToastAndroid.show('Please select image', ToastAndroid.SHORT)
-              } else {
-                ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
-                this.detectFace();
-              }
-            }
-          }>
-          <Image 
-            pointerEvents='none' 
-            source={require('../images/main.png')} />
-          </MainButton>
-        </View>
-        {this.props.regTag === 0 ? <View></View> : this.renderArea.call(this)}
-      </View>
-    );
+    
+      if (Platform.OS === 'android') {
+        return (
+          <View style={styles.allAndroid}>
+            <View style={styles.mainbtn}>
+              <MainButton
+                onPress={() => {
+                  if (selectedImage === null) {
+                    ToastAndroid.show('Please select image', ToastAndroid.SHORT)
+                  } else {
+                    ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
+                    this.detectFace();
+                  }
+                }
+              }>
+              <Image 
+                pointerEvents='none' 
+                source={require('../images/main.png')} />
+            </MainButton>
+            </View>
+            {this.props.regTag === 0 ? <View></View> : this.renderArea.call(this)}
+          </View>
+        );
+      } else {
+        return (
+          <View style={styles.allIOS}>
+            <View style={styles.mainbtn}>
+              <MainButton
+                onPress={() => {
+                  if (selectedImage === null) {
+                    ToastAndroid.show('Please select image', ToastAndroid.SHORT)
+                  } else {
+                    ToastAndroid.show('Intelegent Recognizing', ToastAndroid.SHORT)
+                    this.detectFace();
+                  }
+                }
+              }>
+              <Image 
+                pointerEvents='none' 
+                source={require('../images/main.png')} />
+            </MainButton>
+            </View>
+            {this.props.regTag === 0 ? <View></View> : this.renderArea.call(this)}
+          </View>
+        );
+      }
+    
   }
   
   detectFace() {

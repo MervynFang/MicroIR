@@ -2,7 +2,7 @@
 * @Author: MervynFang
 * @Date:   2016,May,01 18:08:02
 * @Last modified by:   Mervyn
-* @Last modified time: 2016,Jul,30 09:50:26
+* @Last modified time: 2016,Aug,01 00:36:19
 */
 
 import React, { Component } from 'react';
@@ -39,6 +39,7 @@ const BasicButton = MKButton.coloredFab()
     .withStyle({
       width: 60,
       height: 60,
+      borderRadius: 30,
       // todo 这里开了chrome debug 卡顿，不过也没有关系啦
       elevation: 0, // 去掉阴影
     })
