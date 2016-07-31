@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
           new ImagePickerPackage(), // react-native-image-picker
           new ReactMaterialKitPackage(), // react-native-material-kit
           new ScreenPackage(), // screen module
